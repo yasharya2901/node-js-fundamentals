@@ -7,6 +7,10 @@ const clients = [];
 
 server.on("connection", (socket) => {
     clients.push({id: ++idStart, socket});
+    
+    clients.map((client) => {
+        client.socket.write(`User ${idStart} joined!`)
+    })
     socket.write(`id-${idStart}`)
     socket.on("data", (data) => {
         const dataString = data.toString("utf-8")
@@ -16,6 +20,13 @@ server.on("connection", (socket) => {
 
         clients.map((client) => {
             client.socket.write(`> User ${id}: ${message}`);
+        })
+    })
+
+
+    socket.on("end", () => {
+        clients.map((client) => {
+            client.socket.write(`User ${idStart} left!`);
         })
     })
 })
