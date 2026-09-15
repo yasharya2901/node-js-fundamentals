@@ -54,12 +54,12 @@ const fs = require("fs/promises");
     const STREAM_SIZE = stream.writableHighWaterMark
     const buff = Buffer.alloc(STREAM_SIZE);
     let i = 0;
-    
-    
+    let numOfWrites = 500_000_000
+
     const continueWrite = () => {
-        while (i <= 1_000_000) {
+        while (i <= numOfWrites) {
             const buff = Buffer.from(`${i} `, "utf8");
-            if (i == 1_000_000 - 1) {
+            if (i == numOfWrites - 1) {
                 stream.end(buff);
                 return;
             }
@@ -82,6 +82,3 @@ const fs = require("fs/promises");
     })
 
 })()
-
-
-
