@@ -2,3 +2,9 @@
 
 .vscode/
 .zed/
+
+storage/
+
+test.*
+decrypted-write.txt
+write.txt
