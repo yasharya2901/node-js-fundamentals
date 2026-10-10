@@ -8,3 +8,5 @@ storage/
 test.*
 decrypted-write.txt
 write.txt
+
+node_modules/
